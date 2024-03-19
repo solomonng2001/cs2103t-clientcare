@@ -18,6 +18,9 @@ Class Address
 Class Email
 Class Name
 Class Phone
+Class Birthday
+Class Priority
+Class PolicyList
 Class Tag
 
 Class I #FFFFFF
@@ -41,6 +44,9 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
+Person *--> Birthday
+Person *--> Priority
+Person *--> PolicyList
 Person *--> "*" Tag
 
 Person -[hidden]up--> I
