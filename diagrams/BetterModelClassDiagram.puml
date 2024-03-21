@@ -18,4 +18,11 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
+Person *--> Birthday
+Person *--> LastMet
+Person *--> Schedule
+Person *--> Priority
+Person *--> PolicyList
+
+PolicyList --> "*" Policy
 @enduml

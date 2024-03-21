@@ -7,11 +7,10 @@
       "headings": {
         "about-us": "About Us",
         "project-team": "Project team",
-        "john-doe": "John Doe",
-        "jane-doe": "Jane Doe",
-        "johnny-doe": "Johnny Doe",
-        "jean-doe": "Jean Doe",
-        "james-doe": "James Doe"
+        "chia-york-lim": "Chia York Lim",
+        "ge-shuqing": "Ge Shuqing",
+        "regan-choy": "Regan Choy",
+        "solomon-ng": "Solomon Ng"
       },
       "headingKeywords": {}
     },
@@ -40,7 +39,7 @@
       "src": "DeveloperGuide.md",
       "title": "Developer Guide",
       "headings": {
-        "ab-3-developer-guide": "AB-3 Developer Guide",
+        "clientcare": "ClientCare",
         "acknowledgements": "Acknowledgements",
         "setting-up-getting-started": "Setting up, getting started",
         "design": "Design",
@@ -107,15 +106,20 @@
       "src": "UserGuide.md",
       "title": "User Guide",
       "headings": {
-        "ab-3-user-guide": "AB-3 User Guide",
+        "clientcare-user-guide": "ClientCare User Guide",
         "quick-start": "Quick start",
         "features": "Features",
         "viewing-help-help": "Viewing help : help",
-        "adding-a-person-add": "Adding a person: add",
-        "listing-all-persons-list": "Listing all persons : list",
-        "editing-a-person-edit": "Editing a person : edit",
-        "locating-persons-by-name-find": "Locating persons by name: find",
-        "deleting-a-person-delete": "Deleting a person : delete",
+        "adding-a-client-add": "Adding a client: add",
+        "listing-all-clients-list": "Listing all clients : list",
+        "view-a-client-view": "View a client : view",
+        "editing-a-client-edit": "Editing a client : edit",
+        "locating-client-by-name-find": "Locating client by name: find",
+        "deleting-a-client-delete": "Deleting a client : delete",
+        "updating-last-met-met": "Updating last met : met",
+        "scheduling-appointments-schedule": "Scheduling appointments : schedule",
+        "adding-a-policy-addpolicy": "Adding a policy : addpolicy",
+        "deleting-a-policy-deletepolicy": "Deleting a policy : deletepolicy",
         "clearing-all-entries-clear": "Clearing all entries : clear",
         "exiting-the-program-exit": "Exiting the program : exit",
         "saving-the-data": "Saving the data",
@@ -131,15 +135,39 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "addressbook-level-3": "AddressBook Level-3"
+        "clientcare": "ClientCare"
       },
       "headingKeywords": {}
     },
     {
-      "src": "team/johndoe.md",
+      "src": "team/reganchoy.md",
+      "title": "Regan Choy's Project Portfolio Page",
+      "headings": {
+        "project-clientcare": "Project: ClientCare"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/shuqing.md",
+      "title": "Shuqing's Project Portfolio Page",
+      "headings": {
+        "project-clientcare": "Project: ClientCare"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/solomonng.md",
       "title": "John Doe's Project Portfolio Page",
       "headings": {
         "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/yorklim.md",
+      "title": "York Lim's Project Portfolio Page",
+      "headings": {
+        "project-clientcare": "Project: ClientCare"
       },
       "headingKeywords": {}
     },
