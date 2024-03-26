@@ -16,6 +16,8 @@ Class ClientListCard
 Class ClientDetailsCard
 Class ClientViewPanel
 Class ClientPolicyTable
+Class RemindersPanel
+Class RemindersCard
 Class StatusBarFooter
 Class CommandBox
 }
@@ -37,6 +39,7 @@ MainWindow *-down->  "1" CommandBox
 MainWindow *-down-> "1" ResultDisplay
 MainWindow *-down-> "1" ClientListPanel
 MainWindow *-down-> "1" ClientViewPanel
+MainWindow *-down-> "1" RemindersPanel
 MainWindow *-down-> "1" StatusBarFooter
 MainWindow --> "0..1" HelpWindow
 
@@ -44,6 +47,8 @@ ClientListPanel *-down-> "*" ClientListCard
 
 ClientViewPanel *-down-> "1" ClientDetailsCard
 ClientViewPanel *-down-> "1" ClientPolicyTable
+
+RemindersPanel *-down-> "2" RemindersCard
 
 MainWindow -left-|> UiPart
 
@@ -53,12 +58,14 @@ ClientListPanel --|> UiPart
 ClientListCard --|> UiPart
 ClientDetailsCard --|> UiPart
 ClientPolicyTable --|> UiPart
+RemindersCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow --|> UiPart
 
 ClientListCard ..> Model
 ClientDetailsCard ..> Model
 ClientPolicyTable ..> Model
+RemindersCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 

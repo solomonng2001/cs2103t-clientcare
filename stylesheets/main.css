@@ -136,13 +136,13 @@ mark {
 
   /* Reduce font size when printing */
   h1 {
-      font-size: 1.2rem !important;
+      font-size: 1.8rem !important;
   }
   h2 {
-      font-size: 1.0rem !important;
+      font-size: 1.2rem !important;
   }
   h3 {
-      font-size: 0.9rem !important;
+      font-size: 0.7rem !important;
   }
   h4 {
       font-size: 0.8rem !important;
@@ -161,10 +161,32 @@ mark {
   }
 }
 
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #e46c0a;
-}
+  h1 {
+      font-weight: bold;
+      color: #3e7b91;
+  }
+  h2 {
+      font-weight: bold;
+      background-color: #3e7b91;
+      color: white;
+      padding: 4px 8px;
+      margin-bottom: 18px;
+      color: #FFFFFF;
+  }
+
+  h3 {
+      font-weight: bold;
+      color: tomato;
+  }
+
+  h4, h6 {
+    font-weight: bold;
+  	color: white;
+  	background-color: tomato;
+  	padding: 4px;
+  }
+
+  h5 {
+  color: tomato
+  }
+
