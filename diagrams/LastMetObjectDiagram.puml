@@ -1,0 +1,26 @@
+@startuml
+!include style.puml
+skinparam objectFontColor white
+
+object "<u>:LastMetCommand</u>" as LastMetCommand LOGIC_COLOR
+object "<u>:LastMetCommandParser</u>" as LastMetCommandParser LOGIC_COLOR
+object "<u>:AddressBookParser</u>" as AddressBookParser LOGIC_COLOR
+object "<u>:Model</u>" as Model MODEL_COLOR
+object "<u>:CommandResult</u>" as CommandResult LOGIC_COLOR
+object "<u>metPerson:Person" as Person1 LOGIC_COLOR
+object "<u>personToMeet:Person" as Person2 LOGIC_COLOR
+object "<u>:ArgumentMultimap" as ArgumentMultimap LOGIC_COLOR
+object "<u>:ParserUtil" as ParserUtil LOGIC_COLOR
+
+AddressBookParser --> LastMetCommandParser : calls
+AddressBookParser --> LastMetCommand
+LastMetCommandParser -> LastMetCommand
+LastMetCommandParser --> ArgumentMultimap : instantiates
+ParserUtil --> ArgumentMultimap : parses
+LastMetCommand --> Person1
+LastMetCommand --> Person2
+LastMetCommand --> Model
+LastMetCommand -right-> CommandResult : outputs
+Model --> Person2 : Removes
+Model --> Person1 : Updates
+@enduml
