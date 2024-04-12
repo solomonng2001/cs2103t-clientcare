@@ -76,7 +76,6 @@ public class AddPolicyCommand extends Command {
 
         model.setPerson(personToAddPolicy, policyAddedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        model.updateSortPersonComparator(COMPARATOR_SHOW_ORIGINAL_ORDER);
         model.setDisplayClient(policyAddedPerson);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, personToAddPolicy.getName()));

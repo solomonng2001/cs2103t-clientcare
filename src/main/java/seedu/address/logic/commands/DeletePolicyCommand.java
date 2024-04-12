@@ -72,7 +72,6 @@ public class DeletePolicyCommand extends Command {
 
         model.setPerson(personToDeletePolicy, policyDeletedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        model.updateSortPersonComparator(COMPARATOR_SHOW_ORIGINAL_ORDER);
         model.setDisplayClient(policyDeletedPerson);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, policyId, policyDeletedPerson.getName()));

@@ -74,7 +74,6 @@ public class ScheduleCommand extends Command {
 
         model.setPerson(personToMeet, metPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        model.updateSortPersonComparator(COMPARATOR_SHOW_ORIGINAL_ORDER);
         model.setDisplayClient(metPerson);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, personToMeet.getName()));
