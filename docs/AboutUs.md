@@ -50,5 +50,5 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/solomonng2001)]
 [[portfolio](team/solomonng2001.md)]
 
-* Role: Testing
-* Responsibilities: Storage
+* Role: Testing + Code quality
+* Responsibilities: Add and Edit Birthday, Add and Edit Priority, Sort Clients and Birthday Reminders 
