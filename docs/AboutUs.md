@@ -48,7 +48,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/solomonng2001.png" width="200px">
 
 [[github](http://github.com/solomonng2001)]
-[[portfolio](team/solomonng.md)]
+[[portfolio](team/solomonng2001.md)]
 
 * Role: Testing
 * Responsibilities: Storage
