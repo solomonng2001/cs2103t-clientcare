@@ -58,7 +58,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point).
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -507,7 +507,7 @@ More on `PriorityValue` enum class
 **Value proposition**:
 
 * conveniently manage client details and schedules faster than a typical mouse/GUI driven app
-* Convenient tracking of when agent last checked up on clients (eg. reminders)
+* Convenient tracking of when agent last checked up on clients (e.g. reminders)
 * Organise client contacts details
 * Optimization by client’s importance (VIP status etc)
 * Monitor client’s insurance policies
@@ -1385,7 +1385,7 @@ their respective class methods should interact with each other, especially with 
 We decided to simplify the process by restricting the user to 1 appointment per client as our initial beta version faced multiple bugs due to higher number of classes and functions when supporting multiple appointments per client.
 
 To implement the Reminders feature, we had to get the list of clients, so that we are able to filter out the clients that have appointments/ met is overdue/ or have upcoming birthdays, so that we can display them in the reminders panel. 
-However, the prior implementation in the `AddressBook` class of the method `getPersonList()` returns a unmodifiable list, which means that we are unable to use that list to get the new list of filtered out the clients that have appointments/ met is overdue/ or have upcoming birthdays.
+However, the prior implementation in the `AddressBook` class of the method `getPersonList()` returns an unmodifiable list, which means that we are unable to use that list to get the new list of filtered out the clients that have appointments/ met is overdue/ or have upcoming birthdays.
 Thus, we had to create methods within the `UniquePersonList` class to get the list of clients that have appointments/ met is overdue/ or have upcoming birthdays, so that we can display them in the reminders panel. Furthermore, we had to sort this new list so that the reminders will be displayed in the correct order.
 
 `set` is also saved in a separate txt file as it is not related to client traits. Hence, additional testing is needed to ensure the value that `set` updates is saved correctly and is able to handle
