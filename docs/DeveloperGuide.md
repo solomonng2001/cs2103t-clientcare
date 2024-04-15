@@ -13,7 +13,7 @@
 
 ## **Acknowledgements**
 
-* This project was based on the [AddressBook-Level3 (AB3](https://se-education.org/addressbook-level3/) from [SE-EDU](https://se-education.org/).
+* This project was based on the [AddressBook-Level3 (AB3)](https://se-education.org/addressbook-level3/) from [SE-EDU](https://se-education.org/).
 * The `remark` command in this project was implemented with reference to the CS2103T AB3 [Tutorial: Adding a command](https://nus-cs2103-ay2324s2.github.io/tp/tutorials/AddRemark.html).
 * The user guide approach in breakdown of sections and header styling was inspired by [ArtBuddy](https://ay2223s1-cs2103t-w11-3.github.io/tp/UserGuide.html)
 --------------------------------------------------------------------------------------------------------------------
@@ -104,19 +104,19 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
-1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).<br>
+1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g. `DeleteCommandParser`) and uses it to parse the command.
+2. This results in a `Command` object (more precisely, an object of one of its subclasses e.g. `DeleteCommand`) which is executed by the `LogicManager`.
+3. The command can communicate with the `Model` when it is executed (e.g. to delete a person).<br>
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
-1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
+4. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g. `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g. `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+* All `XYZCommandParser` classes (e.g. `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 <div style="page-break-after: always;"></div>
 
 ### Model component
@@ -128,7 +128,7 @@ How the parsing works:
 The `Model` component,
 
 * stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores the currently 'selected' `Person` objects (e.g. results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -243,7 +243,7 @@ The following sequence diagram shows the `sort` operation:
 #### Design Considerations
 
 In order to keep `ModelManager#filteredPersons` as an immutable `final` field, we have decided not to modify the `filteredPersons` directly. Instead, we do the following:
-- we store the `Comparator<Person>` object in `ModelManager#personComparator`, which can be updated by `ModelManager#updateSortPersonComparator(Comparator<Person>)`.
+- We store the `Comparator<Person>` object in `ModelManager#personComparator`, which can be updated by `ModelManager#updateSortPersonComparator(Comparator<Person>)`.
 - When a sorted list of persons is needed, we call `ModelManager#getSortedFilteredPersonList()` which returns a new sorted list of persons sorted using the `ModelManager#personComparator`.
 
 This way, the original order of `ModelManager#filteredPersons` is preserved, and we can get a sorted list of persons when needed.
@@ -322,7 +322,6 @@ The method `ScheduleCommand#execute()` returns a CommandResult object which cont
   * The user can schedule an appointment for each client.
   * This is to prevent the schedule display from having too many schedules which can overcrowd the display.
   * This also keeps the command for scheduling and completing appointments simple as there are fewer commands available for the user.
-
 * Alternative (not taken): Multiple appointments per client.
   * Too many appointments in a single schedule display can make it hard to see for the user.
   * A much more complex GUI is also needed to support such a feature which will be too much work for the project.
@@ -355,7 +354,6 @@ The method `MarkCommand#execute()` returns a CommandResult object which contains
   * The user can mark a schedule as completed, then use `met` to update the last met of the client separately.
   * This is to streamline the completion and closing of open appointments to a single command.
   * Postponing an appointment is also in-built into the `schedule` command.
-
 * Alternative (not taken): Marking an appointment updates the last met for the client automatically.
   * Users may wish to complete or close an open appointment where they did not meet the client.
   * As Last Met cannot be updated to a future date that has yet to pass, this can introduce problems where users may want to close future appointments.
@@ -426,14 +424,13 @@ The following sequence diagram shows the deletepolicy operation:
   * The user can delete a policy using the PolicyID.
   * This allows user to delete the policy without having to type in the whole name of the policy which can be complicated and long.
   * This will allow the user to delete the policy using the PolicyID which is unique to each policy.
-
 * Alternative (not taken): Deleting a policy using PolicyName.
   * The user can delete a policy using the PolicyName.
   * This will cause the user to need to type in the whole policy name to delete the policy, which can be slower and more error-prone.
   * This will also result in the need for policy names saved within the client to be unique which may not be the case in real-world scenarios, different policies can have the same name.
 <div style="page-break-after: always;"></div>
 
-### Extensions to add command and edit command: Add birthday, edit birthday, add priority, edit priority features
+### Extensions to add command and edit command: birthday and priority features
 
 The add birthday and edit birthday features allow users to add and edit the birthday of a client. Birthdays support the birthday reminders feature. The birthday is stored in the `Birthday` class, which contains the birthday details such as day, month, and year. The `Birthday` class is part of the `Person` object in the `Model` component.
 
@@ -506,7 +503,7 @@ More on `PriorityValue` enum class
 
 **Value proposition**:
 
-* conveniently manage client details and schedules faster than a typical mouse/GUI driven app
+* Conveniently manage client details and schedules faster than a typical mouse/GUI driven app
 * Convenient tracking of when agent last checked up on clients (e.g. reminders)
 * Organise client contacts details
 * Optimization by client’s importance (VIP status etc)
