@@ -1,0 +1,29 @@
+@startuml
+!include style.puml
+skinparam objectFontColor white
+
+object "<u>:SortCommand</u>" as SortCommand LOGIC_COLOR
+object "<u>:SortCommandParser</u>" as SortCommandParser LOGIC_COLOR
+object "<u>:AddressBookParser</u>" as AddressBookParser LOGIC_COLOR
+object "<u>:Model</u>" as Model MODEL_COLOR
+object "<u>:CommandResult</u>" as CommandResult LOGIC_COLOR
+object "<u>sortCriteria:SortCriteria</u>" as SortCriteria LOGIC_COLOR
+object "<u>sortOrder:SortOrder</u>" as SortOrder LOGIC_COLOR
+object "<u>:Comparator<Person></u>" as Comparator LOGIC_COLOR
+object "<u>:ArgumentMultimap</u>" as ArgumentMultimap LOGIC_COLOR
+object "<u>:ParserUtil</u>" as ParserUtil LOGIC_COLOR
+
+AddressBookParser --> SortCommandParser : calls
+AddressBookParser --> SortCommand
+SortCommandParser -> SortCommand
+SortCommandParser --> ArgumentMultimap : instantiates
+ParserUtil --> ArgumentMultimap : parses
+SortCommand --> Model
+SortCommand ---> SortCriteria : contains
+SortCommand ---> SortOrder : contains
+SortCommand --> Comparator : creates
+SortCommand -right-> CommandResult : outputs
+Comparator --> SortCriteria : uses
+Comparator --> SortOrder : uses
+Model --> Comparator : updates comparator to sort persons
+@enduml

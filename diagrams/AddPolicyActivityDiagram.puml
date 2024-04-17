@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:User enters AddPolicyCommand with a specified index and parameters;
+:AddressBookParser parses the command;
+:AddPolicyCommandParser parses the arguments provided;
+if () then ([command is valid])
+  :New AddPolicyCommand instance is created;
+  :Policy object is created with the specified parameters;
+  if () then ([PolicyID already exists])
+    :AddPolicyCommand throws exception;
+  else ([PolicyID does not exist])
+  :Policy object is added to client specified by the index;
+  :The existing client in the client list is replaced with the updated client;
+  endif
+else ([command is invalid])
+  :Parser throws exception;
+endif
+if () then ([no error thrown])
+  :Display updated PolicyList;
+else ([error thrown])
+  :Display error message;
+endif
+stop
+
+@enduml

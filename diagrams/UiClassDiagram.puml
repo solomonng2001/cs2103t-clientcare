@@ -48,31 +48,30 @@ ClientListPanel *-down-> "*" ClientListCard
 ClientViewPanel *-down-> "1" ClientDetailsCard
 ClientViewPanel *-down-> "1" ClientPolicyTable
 
-RemindersPanel *-down-> "2" RemindersCard
+RemindersPanel *-down-> "3" RemindersCard
 
-MainWindow -left-|> UiPart
+MainWindow --|> UiPart
 
-ResultDisplay --|> UiPart
+HelpWindow --|> UiPart
 CommandBox --|> UiPart
+ResultDisplay --|> UiPart
+StatusBarFooter --|> UiPart
 ClientListPanel --|> UiPart
 ClientListCard --|> UiPart
 ClientDetailsCard --|> UiPart
 ClientPolicyTable --|> UiPart
 RemindersCard --|> UiPart
-StatusBarFooter --|> UiPart
-HelpWindow --|> UiPart
 
-ClientListCard ..> Model
-ClientDetailsCard ..> Model
-ClientPolicyTable ..> Model
-RemindersCard ..> Model
+ClientListCard ...> Model
+ClientDetailsCard ...> Model
+ClientPolicyTable ...> Model
+RemindersCard ...> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
-ClientListPanel -[hidden]left- HelpWindow
-HelpWindow -[hidden]left- CommandBox
-CommandBox -[hidden]left- ResultDisplay
-ResultDisplay -[hidden]left- StatusBarFooter
+ResultDisplay -[hidden]left- HelpWindow
+CommandBox -[hidden]left- HelpWindow
+StatusBarFooter -[hidden]right- HelpWindow
 
 MainWindow -[hidden]-|> UiPart
 @enduml

@@ -1,0 +1,60 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant "d:DeletePolicyCommand" as DeletePolicyCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+[-> LogicManager : execute("deletepolicy 1 i/1")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("deletepolicy 1 i/1")
+activate AddressBookParser
+
+create DeletePolicyCommand
+AddressBookParser -> DeletePolicyCommand : DeletePolicyCommand(1, "1")
+activate DeletePolicyCommand
+
+DeletePolicyCommand --> AddressBookParser
+deactivate DeletePolicyCommand
+
+AddressBookParser --> LogicManager : d
+deactivate AddressBookParser
+
+LogicManager -> DeletePolicyCommand : execute()
+activate DeletePolicyCommand
+
+DeletePolicyCommand -> Model : setPerson(personToDeletePolicy, policyDeletedPerson)
+activate Model
+
+Model --> DeletePolicyCommand
+deactivate Model
+
+DeletePolicyCommand -> Model : setDisplayClient(policyDeletedPerson)
+activate Model
+
+Model --> DeletePolicyCommand
+deactivate Model
+
+create CommandResult
+DeletePolicyCommand --> CommandResult
+activate CommandResult
+
+CommandResult --> DeletePolicyCommand
+deactivate CommandResult
+
+DeletePolicyCommand --> LogicManager : result
+deactivate DeletePolicyCommand
+DeletePolicyCommand -[hidden]-> LogicManager : result
+destroy DeletePolicyCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

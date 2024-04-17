@@ -1,0 +1,26 @@
+@startuml
+!include style.puml
+skinparam objectFontColor white
+
+object "<u>:DeletePolicyCommand</u>" as DeletePolicyCommand LOGIC_COLOR
+object "<u>:DeletePolicyCommandParser</u>" as DeletePolicyCommandParser LOGIC_COLOR
+object "<u>:AddressBookParser</u>" as AddressBookParser LOGIC_COLOR
+object "<u>:Model</u>" as Model MODEL_COLOR
+object "<u>:CommandResult</u>" as CommandResult LOGIC_COLOR
+object "<u>policyDeletedPerson:Person" as Person1 LOGIC_COLOR
+object "<u>personToDeletePolicy:Person" as Person2 LOGIC_COLOR
+object "<u>:ArgumentMultimap" as ArgumentMultimap LOGIC_COLOR
+object "<u>:ParserUtil" as ParserUtil LOGIC_COLOR
+
+AddressBookParser --> DeletePolicyCommandParser : calls
+AddressBookParser --> DeletePolicyCommand
+DeletePolicyCommandParser -> DeletePolicyCommand
+DeletePolicyCommandParser --> ArgumentMultimap : instantiates
+ParserUtil --> ArgumentMultimap : parses
+DeletePolicyCommand --> Person1
+DeletePolicyCommand --> Person2
+DeletePolicyCommand --> Model
+DeletePolicyCommand -right-> CommandResult : outputs
+Model --> Person2 : Removes
+Model --> Person1 : Updates
+@enduml
